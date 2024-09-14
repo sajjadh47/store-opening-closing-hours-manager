@@ -2,8 +2,8 @@
 Tags: woocommerce,store-closing-opening,store-manager,shop-manager,shop-closing-opening
 Contributors: sajjad67
 Requires at least: 5.6
-Tested up to: 6.0
-Stable tag: 1.0.1
+Tested up to: 6.6
+Stable tag: 1.0.5
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,6 +16,7 @@ Let your customers know when your store is open or closed! Take action when stor
 - Enable/Disable The Plugin Functionality
 - Set The Store Status Close Manually
 - Show Store Opening/Closing Hours In A Widget
+- Show Store Opening/Closing Hours In Shortcode `[sochm_display_table]`
 - Enable Countdown
 - Choose Timer Design From 5 Different Types
 - Set Your Store Timezone
@@ -90,6 +91,14 @@ Just after installing the plugin, go to settings page and set the plugin setting
 30. table
 
 == Changelog ==
+= 1.0.5 =
+- Compatibility check for wp v6.6
+= 1.0.4 =
+- Compatibility check for wp v6.3
+= 1.0.3 =
+- fixed wc_add_notice fatal error issue happens sometimes.
+= 1.0.2 =
+- Added Shortcode Feature
 = 1.0.1 =
 - Added Manual Store Closing Feature
 = 1.0.0 =

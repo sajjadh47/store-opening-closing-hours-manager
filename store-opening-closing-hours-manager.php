@@ -3,7 +3,7 @@
 Plugin Name: Store Opening Closing Hours Manager
 Plugin URI : https://wordpress.org/plugins/store-opening-closing-hours-manager/
 Description: Setup your Woocomerce store opening and closing hours to manage your business at ease!
-Version: 1.0.1
+Version: 1.0.5
 Author: Sajjad Hossain Sagor
 Author URI: https://profiles.wordpress.org/sajjad67
 Text Domain: store-opening-closing-hours-manager
@@ -88,6 +88,11 @@ require_once SOCHM_PLUGIN_PATH . 'includes/public.php';
 require_once SOCHM_PLUGIN_PATH . 'includes/widget.php';
 
 // ---------------------------------------------------------
+// Load Shortcode
+// ---------------------------------------------------------
+require_once SOCHM_PLUGIN_PATH . 'includes/shortcode.php';
+
+// ---------------------------------------------------------
 // Load Admin Settings
 // ---------------------------------------------------------
 require_once SOCHM_PLUGIN_PATH . 'includes/admin.php';
@@ -95,13 +100,13 @@ require_once SOCHM_PLUGIN_PATH . 'includes/admin.php';
 // ---------------------------------------------------------
 // Add Go To Settings Page Link in Plugin List Table
 // ---------------------------------------------------------
-add_filter( 'plugin_action_links_' . plugin_basename(__FILE__), 'sochm_add_goto_settings_link' );
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'sochm_add_goto_settings_link' );
 
 if ( ! function_exists( 'sochm_add_goto_settings_link' ) )
 {
 	function sochm_add_goto_settings_link( $links )
 	{ 	
-	 	$goto_settings_link = array( '<a href="' . admin_url( 'options-general.php?page=store-opening-closing-hours-manager.php' ) . '">' . __( "Settings", 'store-opening-closing-hours-manager' ) . '</a>' );
+		$goto_settings_link = array( '<a href="' . admin_url( 'options-general.php?page=store-opening-closing-hours-manager.php' ) . '">' . __( "Settings", 'store-opening-closing-hours-manager' ) . '</a>' );
 		
 		return array_merge( $links, $goto_settings_link );
 	}
@@ -129,14 +134,14 @@ if ( ! function_exists( 'sochm_admin_enqueue_scripts' ) )
 		wp_enqueue_script( 'sochm_admin_script', plugins_url( '/assets/admin/js/script.js', __FILE__ ), array( 'jquery', 'sochm_angularjs_script' ) );
 
 		wp_localize_script( 'sochm_admin_script', 'SOCHM', array(
-			'savingText' => __( 'Saving... Please Wait!', 'store-opening-closing-hours-manager' ),
-			'savedText' => __( 'Saved!', 'store-opening-closing-hours-manager' ),
-			'saveText' => __( 'Save Changes', 'store-opening-closing-hours-manager' ),
-			'addBtnText' => __( 'Add', 'store-opening-closing-hours-manager' ),
-			'removeBtnText' => __( 'Remove', 'store-opening-closing-hours-manager' ),
-			'confirnDeleteMsg' => __( 'Are you sure, you want to remove this?', 'store-opening-closing-hours-manager' ),
-			'weekDaysTable' => wp_json_encode( $weekDaysTable ),
-			'_wpnonce' => wp_create_nonce( 'sochm_ajax_nonce' )
+			'savingText' 		=> __( 'Saving... Please Wait!', 'store-opening-closing-hours-manager' ),
+			'savedText' 		=> __( 'Saved!', 'store-opening-closing-hours-manager' ),
+			'saveText' 			=> __( 'Save Changes', 'store-opening-closing-hours-manager' ),
+			'addBtnText' 		=> __( 'Add', 'store-opening-closing-hours-manager' ),
+			'removeBtnText' 	=> __( 'Remove', 'store-opening-closing-hours-manager' ),
+			'confirnDeleteMsg' 	=> __( 'Are you sure, you want to remove this?', 'store-opening-closing-hours-manager' ),
+			'weekDaysTable' 	=> wp_json_encode( $weekDaysTable ),
+			'_wpnonce' 			=> wp_create_nonce( 'sochm_ajax_nonce' )
 		) );
 	}
 }
@@ -241,23 +246,23 @@ if ( ! function_exists( 'sochm_enqueue_scripts' ) )
 
 				$sochm_script['toast_html'] = '
 				<div id="sochm-toast" class="sochm-toast store_going_to_close_soon_toast_message">
-	        		<div class="sochm-toast-content">
-			            <div class="sochm-toast-message">
-			                <span class="sochm-toast-text sochm-toast-text-2"></span>
-			            </div>
-			        </div>
-		    	</div>';
+					<div class="sochm-toast-content">
+						<div class="sochm-toast-message">
+							<span class="sochm-toast-text sochm-toast-text-2"></span>
+						</div>
+					</div>
+				</div>';
 
-		    	$sochm_script['toast_message'] = $message . $remaining_time_to_close;
+				$sochm_script['toast_message'] = $message . $remaining_time_to_close;
 
-		    	$sochm_script['toast_type'] = 'error';
+				$sochm_script['toast_type'] = 'error';
 			}
 
 			if ( $notice_type == '1' )
 			{
 				wp_enqueue_style( 'wp-jquery-ui-dialog' );
 
-		    	$sochm_script['dialog_html'] = '
+				$sochm_script['dialog_html'] = '
 				<div id="sochm-dialog">
 				  <div>' . $message . $remaining_time_to_close . '</div>
 				</div>';
@@ -266,8 +271,8 @@ if ( ! function_exists( 'sochm_enqueue_scripts' ) )
 			if ( $notice_type == '2' )
 			{
 				$topValue = is_admin_bar_showing() ? '32px' : '0';
-		    	
-		    	$sochm_script['sticky_header_html'] = '
+				
+				$sochm_script['sticky_header_html'] = '
 				<div id="sochm-sticky-header">
 					<div>' . $message . $remaining_time_to_close . '</div>
 				</div>
@@ -276,7 +281,7 @@ if ( ! function_exists( 'sochm_enqueue_scripts' ) )
 
 			if ( $notice_type == '3' )
 			{
-		    	$sochm_script['sticky_footer_html'] = '
+				$sochm_script['sticky_footer_html'] = '
 				<div id="sochm-sticky-footer">
 					<div>' . $message . $remaining_time_to_close . '</div>
 				</div>
@@ -285,16 +290,16 @@ if ( ! function_exists( 'sochm_enqueue_scripts' ) )
 
 			if ( $notice_type == '4' )
 			{
-		    	$sochm_script['single_page'] = '
+				$sochm_script['single_page'] = '
 				<div class="sochm-single-page-container">
 					<i class="sochm-icon-close">
 						<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
 						</svg>
 					</i>
 				  <div class="middle">
-				    <h3>' . $message . '</h3>
-				    <hr>
-				    <div>' . $remaining_time_to_close . '</div>
+					<h3>' . $message . '</h3>
+					<hr>
+					<div>' . $remaining_time_to_close . '</div>
 				  </div>
 				</div>
 				<style type="text/css" media="screen">body, html{overflow: hidden!important}.sochm-single-page-container {background: ' . $notice_boxbg_color . ';color: ' . $notice_text_color . ';}.sochm-single-page-container h3{color: ' . $notice_text_color . ';}</style>';
@@ -373,23 +378,23 @@ if ( ! function_exists( 'sochm_enqueue_scripts' ) )
 
 				$sochm_script['toast_html'] = '
 				<div id="sochm-toast" class="sochm-toast store_going_to_close_soon_toast_message">
-	        		<div class="sochm-toast-content">
-			            <div class="sochm-toast-message">
-			                <span class="sochm-toast-text sochm-toast-text-2"></span>
-			            </div>
-			        </div>
-		    	</div>';
+					<div class="sochm-toast-content">
+						<div class="sochm-toast-message">
+							<span class="sochm-toast-text sochm-toast-text-2"></span>
+						</div>
+					</div>
+				</div>';
 
-		    	$sochm_script['toast_message'] = $message . $remaining_time_to_open;
+				$sochm_script['toast_message'] = $message . $remaining_time_to_open;
 
-		    	$sochm_script['toast_type'] = 'error';
+				$sochm_script['toast_type'] = 'error';
 			}
 
 			if ( $notice_type == '1' )
 			{
 				wp_enqueue_style( 'wp-jquery-ui-dialog' );
 
-		    	$sochm_script['dialog_html'] = '
+				$sochm_script['dialog_html'] = '
 				<div id="sochm-dialog">
 				  <div>' . $message . $remaining_time_to_open . '</div>
 				</div>';
@@ -398,8 +403,8 @@ if ( ! function_exists( 'sochm_enqueue_scripts' ) )
 			if ( $notice_type == '2' )
 			{
 				$topValue = is_admin_bar_showing() ? '32px' : '0';
-		    	
-		    	$sochm_script['sticky_header_html'] = '
+				
+				$sochm_script['sticky_header_html'] = '
 				<div id="sochm-sticky-header">
 					<div>' . $message . $remaining_time_to_open . '</div>
 				</div>
@@ -408,7 +413,7 @@ if ( ! function_exists( 'sochm_enqueue_scripts' ) )
 
 			if ( $notice_type == '3' )
 			{
-		    	$sochm_script['sticky_footer_html'] = '
+				$sochm_script['sticky_footer_html'] = '
 				<div id="sochm-sticky-footer">
 					<div>' . $message . $remaining_time_to_open . '</div>
 				</div>
@@ -417,16 +422,16 @@ if ( ! function_exists( 'sochm_enqueue_scripts' ) )
 
 			if ( $notice_type == '4' )
 			{
-		    	$sochm_script['single_page'] = '
+				$sochm_script['single_page'] = '
 				<div class="sochm-single-page-container">
 					<i class="sochm-icon-close">
 						<svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
 						</svg>
 					</i>
 				  <div class="middle">
-				    <h3>' . $message . '</h3>
-				    <hr>
-				    <div>' . $remaining_time_to_open . '</div>
+					<h3>' . $message . '</h3>
+					<hr>
+					<div>' . $remaining_time_to_open . '</div>
 				  </div>
 				</div>
 				<style type="text/css" media="screen">body, html{overflow: hidden!important}.sochm-single-page-container {background: ' . $notice_boxbg_color . ';color: ' . $notice_text_color . ';}.sochm-single-page-container h3{color: ' . $notice_text_color . ';}</style>';
@@ -444,15 +449,15 @@ if ( ! function_exists( 'sochm_save_weekTable' ) )
 	function sochm_save_weekTable()
 	{
 		// Check for nonce security      
-	    if ( ! check_admin_referer( 'sochm_ajax_nonce', '_wpnonce' ) )
-	    {
-	    	wp_send_json_error( [ 'message' => __( "Cheatin Huh!", 'store-opening-closing-hours-manager' ) ] );
-	    }
+		if ( ! check_admin_referer( 'sochm_ajax_nonce', '_wpnonce' ) )
+		{
+			wp_send_json_error( [ 'message' => __( "Cheatin Huh!", 'store-opening-closing-hours-manager' ) ] );
+		}
 
-	    if ( ! current_user_can( 'manage_options' ) )
-	    {
-	    	wp_send_json_error( [ 'message' => __( "You don't have permission to access this page!", 'store-opening-closing-hours-manager' ) ] );
-	    }
+		if ( ! current_user_can( 'manage_options' ) )
+		{
+			wp_send_json_error( [ 'message' => __( "You don't have permission to access this page!", 'store-opening-closing-hours-manager' ) ] );
+		}
 
 		if ( isset( $_POST['payload'] ) )
 		{

@@ -16,12 +16,12 @@ if ( ! class_exists( 'SOCHM_PUBLIC' ) )
 		{
 			if ( ! SOCHM_UTIL::isStoreClosed() && SOCHM_UTIL::isStoreGoingToCloseSoon() && ! is_admin() )
 			{
-				add_action( 'init', array( 'SOCHM_PUBLIC', 'store_is_going_to_close_soon' ) );				
+				add_action( 'template_redirect', array( 'SOCHM_PUBLIC', 'store_is_going_to_close_soon' ) );				
 			}
 
 			if ( SOCHM_UTIL::isStoreClosed() && ! is_admin() )
 			{
-				add_action( 'init', array( 'SOCHM_PUBLIC', 'store_is_closed' ) );
+				add_action( 'template_redirect', array( 'SOCHM_PUBLIC', 'store_is_closed' ) );
 			}
 		}
 
@@ -103,7 +103,7 @@ if ( ! class_exists( 'SOCHM_PUBLIC' ) )
 		public static function store_is_closed()
 		{
 		    // clear all carts if store closed
-		    if ( SOCHM_UTIL::get_option( 'auto_clear_carts', 'sochm_basic_settings' ) == 'on' )
+		    if ( SOCHM_UTIL::get_option( 'auto_clear_carts', 'sochm_basic_settings' ) == 'on' && WC()->cart !== null )
 		    {
 		        WC()->cart->empty_cart();
 		    }

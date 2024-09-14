@@ -8,7 +8,7 @@ AngularObj.controller( 'sochmController', function( $scope, $http )
 	$scope.weekDaysTable = JSON.parse( SOCHM.weekDaysTable );
 	
 	$scope.addBtnText = SOCHM.addBtnText;
-});
+} );
 
 jQuery( document ).ready( function( $ )
 {
@@ -38,7 +38,7 @@ jQuery( document ).ready( function( $ )
 		clonedRow.html( clonedRow.html().replace( /store_open_close\[\d+?\]/g, 'store_open_close[' + Date.now() + getRandomArbitrary( 5, 100 ) +']' ) );
 
 		$( this ).closest( 'tr' ).after( clonedRow );
-	});
+	} );
 
 	$( document ).on( 'click', '.removeOpeningClosing', function( event )
 	{
@@ -48,7 +48,7 @@ jQuery( document ).ready( function( $ )
 		{
 			$( this ).closest( 'tr' ).remove();
 		}
-	});
+	} );
 
 	$( '.removeOpeningClosing' ).each( function( index, el )
 	{
@@ -65,9 +65,9 @@ jQuery( document ).ready( function( $ )
 			$( '.' + classes ).not( ':first' ).each( function( index, elm )
 			{
 				$( elm ).find( 'td' ).first().css( 'visibility', 'hidden' );
-			});
+			} );
 		}
-	});
+	} );
 
 	$( document ).on( 'click', '#sochm_hours_table #submit', function( event )
 	{
@@ -95,12 +95,12 @@ jQuery( document ).ready( function( $ )
 			{
 				location.reload();
 			}
-		});
+		} );
 
 		setTimeout( function()
 		{
 			$( self ).prop( 'disabled', false ).val( SOCHM.saveText );
 
 		}, 10000 );
-	});
-});
+	} );
+} );

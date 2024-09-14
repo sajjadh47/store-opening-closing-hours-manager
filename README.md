@@ -3,8 +3,8 @@
 **Tags:** woocommerce,store-closing-opening,store-manager,shop-manager,shop-closing-opening \
 **Contributors:** sajjad67 \
 **Requires at least:** 5.6 \
-**Tested up to:** 6.0 \
-**Stable tag:** 1.0.1 \
+**Tested up to:** 6.6 \
+**Stable tag:** 1.0.5 \
 **License:** GPLv2 \
 **License URI:** http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -188,9 +188,21 @@ Just after installing the plugin, go to settings page and set the plugin setting
 
 ## Changelog
 
+### 1.0.5
+- Compatibility check for wp 6.6
+
+### 1.0.4
+- Compatibility check for wp 6.3
+
+### 1.0.3
+- fixed wc_add_notice fatal error issue happens sometimes.
+
+### 1.0.2
+- Added Shortcode Feature
+
 ### 1.0.1
 
-- Added Manual Store Closing Feature
+- Compatibility check for wp 6.0
 ### 1.0.0
 
 - Initial release.
