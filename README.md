@@ -48,7 +48,7 @@ If your site uses page caching, certain dynamic functionalities may not work as 
 
 It is compatible with the following popular caching plugins:
 
-- Breeze Cache ✅ Currently Active
+- Breeze Cache ✅
 - Cache Enabler ✅
 - GoDaddy Cache ✅
 - Kinsta Cache ✅
