@@ -213,7 +213,7 @@ Just after installing the plugin, go to settings page and set the plugin setting
 ## Changelog
 
 ### 2.0.0
-- Checked for latest wp version 6.8
+- Checked for latest wp version 6.8, introduced templating system and enabled cache plugin compatibility.
 
 ### 1.0.5
 - Compatibility check for wp 6.6
