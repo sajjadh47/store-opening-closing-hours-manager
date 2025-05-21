@@ -1,12 +1,8 @@
 # Store Opening Closing Hours Manager
 
-**Tags:** woocommerce,store-closing-opening,store-manager,shop-manager,shop-closing-opening \
-**Contributors:** sajjad67 \
-**Requires at least:** 5.6 \
-**Tested up to:** 6.6 \
-**Stable tag:** 1.0.5 \
-**License:** GPLv2 \
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
+**Tags:** woocommerce, store-closing-opening, store-manager, shop-manager, shop-closing-opening \
+**Tested up to:** 6.8 \
+**Requires PHP:** 8.0
 
 Setup your Woocomerce store opening and closing hours to manage your business at ease!
 
@@ -34,9 +30,38 @@ Let your customers know when your store is open or closed! Take action when stor
 - Remove The Add To Cart Button Entirely If Store Closed
 - You Can Even Show A Message To Your Customers If They Click The Add To Cart Button If Store Closed
 - Change The Notice Text Color & Background Color
+- Templating system for the notice & timer designs.
 
-**Interested in contributing to Store Opening Closing Hours Manager?**
-Contact me... sagorh672(at)gmail.com
+### Overriding Plugin Templates
+To override a specific template, copy the desired file from the plugin’s /templates/ directory and place it in your child theme under /templates/sochm/. You can then modify the template as needed.
+
+Example:
+If the plugin template is located at:
+`wp-content/plugins/store-opening-closing-hours-manager/templates/notice-type-single-page.php`
+You can override it by copying it to:
+`wp-content/themes/your-theme/templates/sochm/notice-type-single-page.php`
+
+Make sure to maintain the same file structure to ensure proper loading.
+
+### Compatibity With Cache Plugins
+If your site uses page caching, certain dynamic functionalities may not work as expected. This plugin includes built-in support to automatically purge cache when needed, ensuring everything runs smoothly.
+
+It is compatible with the following popular caching plugins:
+
+- Breeze Cache ✅ Currently Active
+- Cache Enabler ✅
+- GoDaddy Cache ✅
+- Kinsta Cache ✅
+- LiteSpeed Cache ✅
+- NitroPack ✅
+- Speed Optimizer ✅
+- Super Page Cache ✅
+- WP Fastest Cache ✅
+- WP Optimize Cache ✅
+- WP Super Cache ✅
+- W3 Total Cache ✅
+- WP Rocket ✅
+- WPEngine Cache ✅
 
 ## Installation
 
@@ -50,8 +75,8 @@ Go to Plugins > Add New.
 4. The resulting installation screen will list the installation as successful or note any problems during the install.
 If successful, click Activate Plugin to activate it, or Return to Plugin Installer for further actions.
 
-To add a WordPress Plugin from github repo / plugin zip file :
-1. Go to wordpress plugin page
+To add a WordPress Plugin from GitHub repo / plugin zip file :
+1. Go to WordPress plugin page
 2. Click Add New & Upload Plugin
 3. Drag / Click upload the plugin zip file
 4. The resulting installation screen will list the installation as successful or note any problems during the install.
@@ -61,7 +86,7 @@ If successful, click Activate Plugin to activate it, or Return to Plugin Install
 
 ### How to use this plugin?
 
-Just after installing the plugin, go to settings page and set the plugin settings according to your needs.. And then see the magic.. See screenshots.
+Just after installing the plugin, go to settings page and set the plugin settings according to your needs. And then see the magic. See screenshots.
 
 ## Screenshots
 
@@ -185,8 +210,10 @@ Just after installing the plugin, go to settings page and set the plugin setting
 
 ![table](https://ps.w.org/store-opening-closing-hours-manager/assets/screenshot-30.png)
 
-
 ## Changelog
+
+### 2.0.0
+- Checked for latest wp version 6.8
 
 ### 1.0.5
 - Compatibility check for wp 6.6

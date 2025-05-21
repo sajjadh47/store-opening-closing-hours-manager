@@ -1,0 +1,29 @@
+li#wp-admin-bar-sochm_notice_in_wp_admin_open .ab-item {
+	background: green;
+}
+
+li#wp-admin-bar-sochm_notice_in_wp_admin_closed .ab-item {
+	background: #db3939;
+}
+
+#sochm_hours_table .form-table .week_days_table th,
+#sochm_hours_table .form-table .week_days_table td {
+	padding: 15px 0px;
+}
+
+#sochm_basic_settings tr.clear_cache ul {
+	list-style: circle;
+	list-style-position: inside;
+}
+
+.week_days_table td sup small {
+	background: #000000;
+	color: white;
+	padding: 2px 6px;
+	border-radius: 3px;
+}
+
+.addNewOpeningClosing,
+.removeOpeningClosing {
+	margin-left: 15px!important;
+}
