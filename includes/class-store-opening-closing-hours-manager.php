@@ -75,7 +75,7 @@ class Store_Opening_Closing_Hours_Manager {
 	 *
 	 * - Store_Opening_Closing_Hours_Manager_Loader. Orchestrates the hooks of the plugin.
 	 * - Store_Opening_Closing_Hours_Manager_i18n.   Defines internationalization functionality.
-	 * - Sajjad_Dev_Settings_API.                    Provides an interface for interacting with the WordPress Options API.
+	 * - Sajjad_Dev_Settings_API.                    Provides an interface for interacting with the WordPress Settings API.
 	 * - Store_Opening_Closing_Hours_Manager_Widget. Register a WordPress widget.
 	 * - Store_Opening_Closing_Hours_Manager_Admin.  Defines all hooks for the admin area.
 	 * - Store_Opening_Closing_Hours_Manager_Public. Defines all hooks for the public side of the site.
@@ -100,7 +100,7 @@ class Store_Opening_Closing_Hours_Manager {
 		require_once STORE_OPENING_CLOSING_HOURS_MANAGER_PLUGIN_PATH . 'includes/class-store-opening-closing-hours-manager-i18n.php';
 
 		/**
-		 * The class responsible for defining an interface for interacting with the WordPress Options API.
+		 * The class responsible for defining an interface for interacting with the WordPress Settings API.
 		 */
 		require_once STORE_OPENING_CLOSING_HOURS_MANAGER_PLUGIN_PATH . 'includes/class-sajjad-dev-settings-api.php';
 
