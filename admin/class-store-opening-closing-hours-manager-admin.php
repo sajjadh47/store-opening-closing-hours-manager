@@ -255,11 +255,11 @@ class Store_Opening_Closing_Hours_Manager_Admin {
 	public function admin_menu() {
 		add_menu_page(
 			__( 'Store O/C Hours Manager', 'store-opening-closing-hours-manager' ),
-			__( 'Store O/C Hours Manager', 'store-opening-closing-hours-manager' ),
+			__( 'Store O/C Hours', 'store-opening-closing-hours-manager' ),
 			'manage_options',
 			'store-opening-closing-hours-manager',
 			array( $this, 'menu_page' ),
-			'dashicons-admin-tools'
+			'dashicons-clock'
 		);
 	}
 
@@ -271,6 +271,65 @@ class Store_Opening_Closing_Hours_Manager_Admin {
 	 */
 	public function menu_page() {
 		$this->settings_api->show_forms();
+		?>
+		<script type="text/html" id="tmpl-store-hours-table-template">
+			<# _.each(data.weekDaysTable, function(week, key) { #>
+				<tr class="weekDay{{ week.week_name }}">
+					<td>
+						<input type="hidden" name="store_open_close[{{ key }}][fullName]" value="{{ week.week_full_name }}">
+						<input type="hidden" name="store_open_close[{{ key }}][name]" value="{{ week.week_name }}">
+						{{ week.week_full_name }} <# if (week.week_name === data.today) { #><sup><small>{{ data.todayText }}</small></sup><# } #>
+					</td>
+
+					<td>
+						<select class="store_open_close_status" name="store_open_close[{{ key }}][status]">
+							<option value="open" <# if (week.status === 'open') { #>selected<# } #> >{{ data.statusOpen }}</option>
+							<option value="closed" <# if (week.status === 'closed') { #>selected<# } #> >{{ data.statusClosed }}</option>
+						</select>
+					</td>
+
+					<td>
+						<select class="time_dropdown" name="store_open_close[{{ key }}][opening_time_hr]">
+							<# _.each(week.opening_time_hr, function(opening_time_hr) { #>
+								<option value="{{ opening_time_hr }}" <# if (opening_time_hr === week.selected_opening_time_hr) { #>selected<# } #>>
+									{{ opening_time_hr }}
+								</option>
+							<# }); #>
+						</select>
+
+						<select class="time_dropdown" name="store_open_close[{{ key }}][opening_time_min]">
+							<# _.each(week.opening_time_min, function(opening_time_min) { #>
+								<option value="{{ opening_time_min }}" <# if (opening_time_min === week.selected_opening_time_min) { #>selected<# } #>>
+									{{ opening_time_min }}
+								</option>
+							<# }); #>
+						</select>
+					</td>
+
+					<td style="min-width: 25rem;">
+						<select class="time_dropdown" name="store_open_close[{{ key }}][closing_time_hr]">
+							<# _.each(week.closing_time_hr, function(closing_time_hr) { #>
+							<option value="{{ closing_time_hr }}" <# if (closing_time_hr === week.selected_closing_time_hr) { #>selected<# } #>>
+								{{ closing_time_hr }}
+							</option>
+							<# }); #>
+						</select>
+
+						<select class="time_dropdown" name="store_open_close[{{ key }}][closing_time_min]">
+							<# _.each(week.closing_time_min, function(closing_time_min) { #>
+								<option value="{{ closing_time_min }}" <# if (closing_time_min === week.selected_closing_time_min) { #>selected<# } #>>
+									{{ closing_time_min }}
+								</option>
+							<# }); #>
+						</select>
+
+						<button class="button addNewOpeningClosing" type="button">{{ data.addBtnText }}</button>
+						<button class="button removeOpeningClosing" type="button">{{ data.removeBtnText }}</button>
+					</td>
+				</tr>
+			<# }); #>
+		</script>
+		<?php
 	}
 
 	/**
@@ -364,11 +423,13 @@ class Store_Opening_Closing_Hours_Manager_Admin {
 		);
 
 		$compatibility_plugins = '<ul>';
+
 		foreach ( $cache_plugins as $key => $label ) {
 			$is_active = ( isset( $used_cache_system['key'] ) && $used_cache_system['key'] === $key ) ? __( ' Currently Active', 'store-opening-closing-hours-manager' ) : '';
 
 			$compatibility_plugins .= '<li>' . esc_html( $label . ' ✅' . $is_active ) . '</li>';
 		}
+
 		$compatibility_plugins .= '</ul>';
 
 		$settings_fields = array(
