@@ -13,7 +13,7 @@
  * Plugin Name:       Store Opening Closing Hours Manager
  * Plugin URI:        https://wordpress.org/plugins/store-opening-closing-hours-manager/
  * Description:       Setup your WooComerce store opening and closing hours to manage your business at ease!
- * Version:           2.0.0
+ * Version:           2.0.1
  * Requires at least: 5.6
  * Requires PHP:      8.0
  * Author:            Sajjad Hossain Sagor
@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'STORE_OPENING_CLOSING_HOURS_MANAGER_PLUGIN_VERSION', '2.0.0' );
+define( 'STORE_OPENING_CLOSING_HOURS_MANAGER_PLUGIN_VERSION', '2.0.1' );
 
 /**
  * Define Plugin Folders Path
