@@ -15,7 +15,7 @@
  * Description:       Setup your WooComerce store opening and closing hours to manage your business at ease!
  * Version:           2.0.1
  * Requires at least: 5.6
- * Requires PHP:      8.0
+ * Requires PHP:      8.2
  * Author:            Sajjad Hossain Sagor
  * Author URI:        https://sajjadhsagor.com/
  * License:           GPL-2.0+

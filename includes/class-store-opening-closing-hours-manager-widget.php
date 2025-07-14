@@ -84,7 +84,7 @@ class Store_Opening_Closing_Hours_Manager_Widget extends WP_Widget {
 		$title = isset( $instance['title'] ) ? $instance['title'] : __( 'Store Opening & Closing Times', 'store-opening-closing-hours-manager' );
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'store-opening-closing-hours-manager' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
 		</p>
 		<?php
