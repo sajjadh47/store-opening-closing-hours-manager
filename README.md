@@ -214,6 +214,9 @@ Just after installing the plugin, go to settings page and set the plugin setting
 
 ## Changelog
 
+### 2.0.2
+* Added support for localization of week days names.
+
 ### 2.0.1
 * Fixed issue: typo giving fatal error
 

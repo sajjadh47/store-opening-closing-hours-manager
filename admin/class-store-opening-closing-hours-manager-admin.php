@@ -227,6 +227,7 @@ class Store_Opening_Closing_Hours_Manager_Admin {
 					'_wpnonce'         => wp_create_nonce( 'sochm_ajax_nonce' ),
 					'today'            => $today,
 					'todayText'        => __( 'Today', 'store-opening-closing-hours-manager' ),
+					'timezone'         => $timezone,
 				)
 			);
 		}

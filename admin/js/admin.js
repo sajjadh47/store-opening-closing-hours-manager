@@ -1,6 +1,9 @@
+/*jshint esversion: 6 */
+
 jQuery( document ).ready( function( $ )
 {
-	var data = {
+	var data =
+	{
 		weekDaysTable: JSON.parse( StoreOpeningClosingHoursManager.weekDaysTable ),
 		statusOpen: StoreOpeningClosingHoursManager.statusOpen,
 		statusClosed: StoreOpeningClosingHoursManager.statusClosed,
@@ -11,9 +14,32 @@ jQuery( document ).ready( function( $ )
 	};
 
 	var template = wp.template( 'store-hours-table-template' );
-    var html     = template( data );
-    
-    $( '#store-hours-table-body' ).html( html );
+	var html     = template( data );
+	
+	$( '#store-hours-table-body' ).html( html );
+
+	var timeZone   = StoreOpeningClosingHoursManager.timezone;
+	var formatting =
+	{
+		timeZone,
+		year   : 'numeric',
+		month  : '2-digit',
+		day    : '2-digit',
+		hour   : '2-digit',
+		minute : '2-digit',
+		second : '2-digit',
+		hour12 : false,
+	};
+
+	setInterval( function()
+	{
+		var date = new Date();
+
+		var formattedTime = date.toLocaleString( 'en-US', formatting ).replace( /(\d+)\/(\d+)\/(\d+), (\d+):(\d+):(\d+)/, '$3-$1-$2 $4:$5:$6' );
+		
+		$( 'tr.hours_table td p.description strong' ).html( formattedTime );
+
+	}, 1000 );
 
 	/**
 	 * Returns a random number between min (inclusive) and max (exclusive).

@@ -19,7 +19,7 @@ $timezone = Store_Opening_Closing_Hours_Manager::get_option( 'timezone', 'sochm_
 $date_now = new DateTime( 'now', new DateTimezone( $timezone ) );
 
 printf(
-	'%s: <strong>%s</strong>',
+	'%s : <strong>%s</strong>',
 	esc_html__( 'Current Server Time', 'store-opening-closing-hours-manager' ),
 	esc_html( $date_now->format( 'Y-m-d H:i:s' ) ),
 );

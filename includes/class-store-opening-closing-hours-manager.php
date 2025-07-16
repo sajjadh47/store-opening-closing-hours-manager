@@ -639,6 +639,16 @@ class Store_Opening_Closing_Hours_Manager {
 	 * @return    array An array containing the formatted table settings.
 	 */
 	public static function get_table_settings() {
+		$week_days_i18n = array(
+			'monday'    => __( 'Monday', 'store-opening-closing-hours-manager' ),
+			'tuesday'   => __( 'Tuesday', 'store-opening-closing-hours-manager' ),
+			'wednesday' => __( 'Wednesday', 'store-opening-closing-hours-manager' ),
+			'thursday'  => __( 'Thursday', 'store-opening-closing-hours-manager' ),
+			'friday'    => __( 'Friday', 'store-opening-closing-hours-manager' ),
+			'saturday'  => __( 'Saturday', 'store-opening-closing-hours-manager' ),
+			'sunday'    => __( 'Sunday', 'store-opening-closing-hours-manager' ),
+		);
+
 		// Get the raw week days data from the database.
 		$week_days       = get_option( 'sochm_table_data', array( 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday' ) );
 		$week_days_table = array();
@@ -656,7 +666,7 @@ class Store_Opening_Closing_Hours_Manager {
 			$tmp['week_name'] = isset( $week_day['name'] ) ? $week_day['name'] : $week_day;
 
 			// Set the full week day name (e.g., "Monday").
-			$tmp['week_full_name'] = ucfirst( $tmp['week_name'] );
+			$tmp['week_full_name'] = $week_days_i18n[ $tmp['week_name'] ];
 
 			// Set the status (open/closed) for the week day.
 			$tmp['status'] = isset( $week_day['status'] ) ? $week_day['status'] : 'open';

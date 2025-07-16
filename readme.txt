@@ -4,7 +4,7 @@ Contributors: sajjad67
 Author: Sajjad Hossain Sagor
 Tested up to: 6.8
 Requires at least: 5.6
-Stable tag: 2.0.1
+Stable tag: 2.0.2
 Requires PHP: 8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -122,6 +122,8 @@ Just after installing the plugin, go to settings page and set the plugin setting
 30. table
 
 == Changelog ==
+= 2.0.2 =
+- Added support for localization of week days names.
 = 2.0.1 =
 - Fixed issue: typo giving fatal error
 = 2.0.0 =
