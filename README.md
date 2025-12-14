@@ -1,6 +1,6 @@
 # Store Opening Closing Hours Manager
 
-[![Plugin Banner](https://ps.w.org/store-opening-closing-hours-manager/assets/banner-772x250.png)](https://wordpress.org/plugins/store-opening-closing-hours-manager/)
+[![Plugin Banner](https://ps.w.org/store-opening-closing-hours-manager/assets/banner-1544x500.png)](https://wordpress.org/plugins/store-opening-closing-hours-manager/)
 
 **Tags:** woocommerce, store-closing-opening, store-manager, shop-manager, shop-closing-opening \
 **Tested up to:** 6.8 \
