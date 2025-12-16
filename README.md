@@ -3,7 +3,7 @@
 [![Plugin Banner](https://ps.w.org/store-opening-closing-hours-manager/assets/banner-1544x500.png)](https://wordpress.org/plugins/store-opening-closing-hours-manager/)
 
 **Tags:** woocommerce, store-closing-opening, store-manager, shop-manager, shop-closing-opening \
-**Tested up to:** 6.8 \
+**Tested up to:** 6.9 \
 **Requires PHP:** 8.0
 
 Setup your Woocomerce store opening and closing hours to manage your business at ease!
@@ -213,6 +213,9 @@ Just after installing the plugin, go to settings page and set the plugin setting
 ![table](https://ps.w.org/store-opening-closing-hours-manager/assets/screenshot-30.png)
 
 ## Changelog
+
+### 2.0.3
+- Compatibility check for wp 6.9
 
 ### 2.0.2
 * Added support for localization of week days names.

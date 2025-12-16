@@ -581,7 +581,7 @@ class Store_Opening_Closing_Hours_Manager_Admin {
 				),
 				array(
 					'name'  => 'clear_cache',
-					'label' => __( 'Compatibity With Cache Plugins', 'store-opening-closing-hours-manager' ),
+					'label' => __( 'Compatibility With Cache Plugins', 'store-opening-closing-hours-manager' ),
 					'type'  => 'html',
 					'desc'  => sprintf(
 						'<strong>%s</strong>%s',
